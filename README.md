@@ -6,8 +6,8 @@ Reports upload and processing
 
 1) git clone
 2) composer install
-3) Setup DATABASE_URL in .env file. 
-    For example DATABASE_URL=mysql://user:yourPassword@127.0.0.1:3306/reports_db?serverVersion=8.0
+3) Setup DATABASE_URL in <i>.env</i> file. 
+    For example <code>DATABASE_URL=mysql://user:yourPassword@127.0.0.1:3306/reports_db?serverVersion=8.0</code>
     Tested on MySQL v 8.0
 4) bin/console doctrine:database:create
 5) bin/console doctrine:migrations:migrate
