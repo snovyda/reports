@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as CustomAssert;
 
 /**
  * @ORM\Table(name="reports")
@@ -47,7 +49,6 @@ class Report
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=255)
      */
     private $file;

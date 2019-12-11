@@ -39,6 +39,13 @@ final class Version20191211005254 extends AbstractMigration
     \'[]\', 
     \'$argon2id$v=19$m=65536,t=4,p=1$UwiRyFsSZfQwmY5cwyfHOw$/9XObUZmsB8GUpBWA9x2y9FWXWicU7sjDrYhQsEW0Lc\',
     NULL
+),
+(
+    NULL, 
+    \'july@company.ua\', 
+    \'[]\', 
+    \'$argon2id$v=19$m=65536,t=4,p=1$JB9LqDcOhf5yWamY/QTxow$TzISKLpdF0hFBziQNspHGtiKR7jghjGU1RKmIp+TJXU\',
+    NULL
 );
         ');
     }

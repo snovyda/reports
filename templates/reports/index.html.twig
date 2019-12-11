@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ReportsController!{% endblock %}
+{% block title %}Reports List{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,43 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1 class="text-center">Список отчетов</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/snovyda/Sites/reports.dev/src/Controller/ReportsController.php'|file_link(0) }}">src/Controller/ReportsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/snovyda/Sites/reports.dev/templates/reports/index.html.twig'|file_link(0) }}">templates/reports/index.html.twig</a></code></li>
-    </ul>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% if (reports is not empty) %}
+    <table class="table table-hover table-striped" style="font-size: 75%;">
+        <thead>
+        <tr class="text-center">
+            <th scope="col">Пользователь</th>
+            <th scope="col">Код предприятия</th>
+            <th scope="col">Наименование предприятия</th>
+            <th scope="col">Тип информации</th>
+            <th scope="col">Дата размещения</th>
+            <th scope="col">Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for report in reports %}
+            <tr class="text-center">
+                <td>{{ report.email }}</td>
+                <td>{{ report.edrpou }}</td>
+                <td>{{ report.name }}</td>
+                <td>{{ report.nreg ? 'Регулярная' : 'Не регулярная' }}</td>
+                <td>{{ report.publicDt | date('d.m.Y H:i') }}</td>
+                <td><a href="{{ asset('uploads/reports/' ~ report.file) }}">Просмотреть</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-info" style="margin-bottom: 20px">Отчетов пока нет...</div>
+    {% endif %}
+
+    <a class="btn btn-primary" href="{{ path('reports_upload') }}" role="button">Подать отчет</a>
 </div>
 {% endblock %}

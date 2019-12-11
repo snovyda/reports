@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class ReportRepository extends EntityRepository
 {
+    /**
+     * @return mixed
+     */
+    public function getAll()
+    {
+        return $this->createQueryBuilder('r')
+            ->innerJoin('r.user', 'u')
+            ->select('u.email, r.name, r.edrpou, r.file, r.nreg, r.publicDt')
+            ->orderBy('r.publicDt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
